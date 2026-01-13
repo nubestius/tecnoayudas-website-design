@@ -25,11 +25,14 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1" role="main" aria-label="Contenido principal">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-background to-card py-20 px-4 sm:px-6 lg:px-8">
+        <section
+          className="bg-gradient-to-br from-background to-card py-20 px-4 sm:px-6 lg:px-8"
+          aria-labelledby="hero-heading"
+        >
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="font-heading font-black text-4xl md:text-6xl text-balance text-foreground mb-6">
+            <h1 id="hero-heading" className="font-heading font-black text-4xl md:text-6xl text-balance text-foreground mb-6">
               Tecnologías para la <span className="text-primary">Inclusión</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground text-balance max-w-3xl mx-auto mb-8 leading-relaxed">
@@ -60,10 +63,12 @@ export default function HomePage() {
         </section>
 
         {/* Valores Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background" aria-labelledby="valores-heading">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">Nuestros Valores</h2>
+              <h2 id="valores-heading" className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+                Nuestros Valores
+              </h2>
               <p className="text-lg text-muted-foreground text-balance max-w-2xl mx-auto">
                 Trabajamos con pasión para crear un mundo más inclusivo y accesible para todos
               </p>
@@ -122,10 +127,12 @@ export default function HomePage() {
         </section>
 
         {/* Services Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card" aria-labelledby="soluciones-heading">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">Nuestras Soluciones</h2>
+              <h2 id="soluciones-heading" className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+                Nuestras Soluciones
+              </h2>
               <p className="text-lg text-muted-foreground text-balance max-w-2xl mx-auto">
                 Tecnologías especializadas que transforman la vida de personas con discapacidad y personas mayores
               </p>
@@ -199,30 +206,43 @@ export default function HomePage() {
         </section>
 
         {/* Statistics Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary text-primary-foreground">
+        <section
+          className="py-16 px-4 sm:px-6 lg:px-8 bg-primary text-primary-foreground"
+          aria-labelledby="impacto-heading"
+        >
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Nuestro Impacto</h2>
+              <h2 id="impacto-heading" className="font-heading font-bold text-3xl md:text-4xl mb-4">
+                Nuestro Impacto
+              </h2>
               <p className="text-lg opacity-90 text-balance max-w-2xl mx-auto">
                 Más de una década transformando vidas a través de la tecnología inclusiva
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-heading font-black mb-2">500+</div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8" role="list">
+              <div className="text-center" role="listitem">
+                <div className="text-4xl md:text-5xl font-heading font-black mb-2" aria-label="Más de 500">
+                  500+
+                </div>
                 <p className="text-lg opacity-90">Personas Beneficiadas</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-heading font-black mb-2">50+</div>
+              <div className="text-center" role="listitem">
+                <div className="text-4xl md:text-5xl font-heading font-black mb-2" aria-label="Más de 50">
+                  50+
+                </div>
                 <p className="text-lg opacity-90">Organizaciones</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-heading font-black mb-2">15+</div>
+              <div className="text-center" role="listitem">
+                <div className="text-4xl md:text-5xl font-heading font-black mb-2" aria-label="Más de 15">
+                  15+
+                </div>
                 <p className="text-lg opacity-90">Años de Experiencia</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-heading font-black mb-2">98%</div>
+              <div className="text-center" role="listitem">
+                <div className="text-4xl md:text-5xl font-heading font-black mb-2" aria-label="98 por ciento">
+                  98%
+                </div>
                 <p className="text-lg opacity-90">Satisfacción</p>
               </div>
             </div>
@@ -230,18 +250,20 @@ export default function HomePage() {
         </section>
 
         {/* Clients Carousel Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background" aria-labelledby="clientes-heading">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">Confían en Nosotros</h2>
+              <h2 id="clientes-heading" className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+                Confían en Nosotros
+              </h2>
               <p className="text-lg text-muted-foreground text-balance max-w-2xl mx-auto">
                 Organizaciones líderes que han transformado sus espacios con nuestras soluciones inclusivas
               </p>
             </div>
 
             {/* Carousel Container */}
-            <div className="relative overflow-hidden">
-              <div className="flex animate-scroll space-x-12 items-center">
+            <div className="relative overflow-hidden" role="region" aria-label="Carrusel de clientes">
+              <div className="flex animate-scroll space-x-12 items-center" aria-live="polite">
                 {/* First set of logos */}
                 <div className="flex space-x-12 items-center min-w-max">
                   <img
@@ -375,10 +397,10 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card" aria-labelledby="testimonios-heading">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+              <h2 id="testimonios-heading" className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
                 Lo Que Dicen Nuestros Clientes
               </h2>
               <p className="text-lg text-muted-foreground text-balance max-w-2xl mx-auto">
@@ -386,10 +408,10 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="p-6 hover:shadow-lg transition-shadow">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
+              <Card className="p-6 hover:shadow-lg transition-shadow" role="listitem">
                 <CardContent className="pt-6">
-                  <div className="flex items-center mb-4">
+                  <div className="flex items-center mb-4" aria-label="5 estrellas">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 text-secondary fill-current" aria-hidden="true" />
                     ))}
@@ -399,7 +421,7 @@ export default function HomePage() {
                     adaptada que nos proporcionaron cambió completamente su calidad de vida."
                   </blockquote>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3" aria-hidden="true">
                       <span className="text-primary-foreground font-semibold">MG</span>
                     </div>
                     <div>
@@ -410,9 +432,9 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 hover:shadow-lg transition-shadow">
+              <Card className="p-6 hover:shadow-lg transition-shadow" role="listitem">
                 <CardContent className="pt-6">
-                  <div className="flex items-center mb-4">
+                  <div className="flex items-center mb-4" aria-label="5 estrellas">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 text-secondary fill-current" aria-hidden="true" />
                     ))}
@@ -422,7 +444,7 @@ export default function HomePage() {
                     inclusivas y mejorar la comunicación con nuestros usuarios."
                   </blockquote>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center mr-3" aria-hidden="true">
                       <span className="text-secondary-foreground font-semibold">AR</span>
                     </div>
                     <div>
@@ -433,9 +455,9 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 hover:shadow-lg transition-shadow">
+              <Card className="p-6 hover:shadow-lg transition-shadow" role="listitem">
                 <CardContent className="pt-6">
-                  <div className="flex items-center mb-4">
+                  <div className="flex items-center mb-4" aria-label="5 estrellas">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 text-secondary fill-current" aria-hidden="true" />
                     ))}
@@ -445,7 +467,7 @@ export default function HomePage() {
                     la integración de nuestros estudiantes."
                   </blockquote>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3" aria-hidden="true">
                       <span className="text-primary-foreground font-semibold">JL</span>
                     </div>
                     <div>

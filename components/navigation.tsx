@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -25,6 +25,45 @@ const solucionesSubmenu = [
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSolucionesOpen, setIsSolucionesOpen] = useState(false)
+  const solucionesRef = useRef<HTMLDivElement>(null)
+  const solucionesButtonRef = useRef<HTMLAnchorElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (solucionesRef.current && !solucionesRef.current.contains(event.target as Node)) {
+        setIsSolucionesOpen(false)
+      }
+    }
+
+    if (isSolucionesOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isSolucionesOpen])
+
+  // Handle keyboard navigation for dropdown
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isSolucionesOpen) return
+
+      if (event.key === "Escape") {
+        setIsSolucionesOpen(false)
+        solucionesButtonRef.current?.focus()
+      }
+    }
+
+    if (isSolucionesOpen) {
+      document.addEventListener("keydown", handleKeyDown)
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [isSolucionesOpen])
 
   return (
     <nav
@@ -57,14 +96,25 @@ export function Navigation() {
             </Link>
 
             <div
+              ref={solucionesRef}
               className="relative"
               onMouseEnter={() => setIsSolucionesOpen(true)}
               onMouseLeave={() => setIsSolucionesOpen(false)}
             >
               <Link
+                ref={solucionesButtonRef}
                 href="/soluciones"
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-base px-4 py-2 rounded-md hover:bg-muted/50 flex items-center"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-base px-4 py-2 rounded-md hover:bg-muted/50 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 aria-label="Ir a Soluciones"
+                aria-expanded={isSolucionesOpen}
+                aria-haspopup="true"
+                onFocus={() => setIsSolucionesOpen(true)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setIsSolucionesOpen(!isSolucionesOpen)
+                  }
+                }}
               >
                 Soluciones
                 <ChevronDown className="h-4 w-4 ml-1" aria-hidden="true" />
@@ -72,11 +122,16 @@ export function Navigation() {
 
               {/* Submenu dropdown */}
               {isSolucionesOpen && (
-                <div className="absolute top-full left-0 mt-1 w-80 bg-card/95 backdrop-blur-sm border border-border rounded-lg shadow-lg z-50">
+                <div
+                  className="absolute top-full left-0 mt-1 w-80 bg-card/95 backdrop-blur-sm border border-border rounded-lg shadow-lg z-50"
+                  role="menu"
+                  aria-label="Submenú de soluciones"
+                >
                   <div className="p-2">
                     <Link
                       href="/soluciones"
-                      className="block px-4 py-3 text-sm font-semibold text-primary hover:bg-muted rounded-md transition-colors duration-200 border-b border-border mb-2"
+                      className="block px-4 py-3 text-sm font-semibold text-primary hover:bg-muted rounded-md transition-colors duration-200 border-b border-border mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      role="menuitem"
                     >
                       Ver todas las soluciones
                     </Link>
@@ -84,7 +139,8 @@ export function Navigation() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block px-4 py-3 hover:bg-muted rounded-md transition-colors duration-200"
+                        className="block px-4 py-3 hover:bg-muted rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                        role="menuitem"
                       >
                         <div className="font-medium text-foreground text-sm">{item.name}</div>
                         <div className="text-xs text-muted-foreground mt-1">{item.description}</div>

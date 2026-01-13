@@ -109,13 +109,19 @@ export default function ContactoPage() {
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       {error && (
-                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">{error}</div>
+                        <div
+                          className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md"
+                          role="alert"
+                          aria-live="assertive"
+                        >
+                          {error}
+                        </div>
                       )}
 
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="nombre" className="block text-sm font-medium text-foreground mb-2">
-                            Nombre completo *
+                            Nombre completo <span className="text-destructive" aria-label="requerido">*</span>
                           </label>
                           <Input
                             id="nombre"
@@ -126,11 +132,15 @@ export default function ContactoPage() {
                             onChange={handleInputChange}
                             placeholder="Tu nombre completo"
                             aria-describedby="nombre-help"
+                            aria-required="true"
                           />
+                          <span id="nombre-help" className="sr-only">
+                            Campo requerido. Ingresa tu nombre completo.
+                          </span>
                         </div>
                         <div>
                           <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                            Correo electrónico *
+                            Correo electrónico <span className="text-destructive" aria-label="requerido">*</span>
                           </label>
                           <Input
                             id="email"
@@ -141,7 +151,12 @@ export default function ContactoPage() {
                             onChange={handleInputChange}
                             placeholder="tu@email.com"
                             aria-describedby="email-help"
+                            aria-required="true"
+                            autoComplete="email"
                           />
+                          <span id="email-help" className="sr-only">
+                            Campo requerido. Ingresa una dirección de correo electrónico válida.
+                          </span>
                         </div>
                       </div>
 
@@ -157,7 +172,12 @@ export default function ContactoPage() {
                             value={formData.telefono}
                             onChange={handleInputChange}
                             placeholder="+57 300 123 4567"
+                            aria-describedby="telefono-help"
+                            autoComplete="tel"
                           />
+                          <span id="telefono-help" className="sr-only">
+                            Opcional. Formato: +57 seguido de 10 dígitos.
+                          </span>
                         </div>
                         <div>
                           <label htmlFor="empresa" className="block text-sm font-medium text-foreground mb-2">
@@ -201,19 +221,23 @@ export default function ContactoPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="mensaje" className="block text-sm font-medium text-foreground mb-2">
-                          Mensaje *
-                        </label>
-                        <Textarea
-                          id="mensaje"
-                          name="mensaje"
-                          required
-                          rows={5}
-                          value={formData.mensaje}
-                          onChange={handleInputChange}
-                          placeholder="Cuéntanos sobre tu proyecto o necesidades específicas..."
-                          aria-describedby="mensaje-help"
-                        />
+                          <label htmlFor="mensaje" className="block text-sm font-medium text-foreground mb-2">
+                            Mensaje <span className="text-destructive" aria-label="requerido">*</span>
+                          </label>
+                          <Textarea
+                            id="mensaje"
+                            name="mensaje"
+                            required
+                            rows={5}
+                            value={formData.mensaje}
+                            onChange={handleInputChange}
+                            placeholder="Cuéntanos sobre tu proyecto o necesidades específicas..."
+                            aria-describedby="mensaje-help"
+                            aria-required="true"
+                          />
+                          <span id="mensaje-help" className="sr-only">
+                            Campo requerido. Describe tu proyecto o necesidades.
+                          </span>
                       </div>
 
                       <Button
