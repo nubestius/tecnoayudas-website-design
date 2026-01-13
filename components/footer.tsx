@@ -66,11 +66,13 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
-                <span>+34 900 000 000</span>
+                <a href="tel:+573116368873" className="hover:text-primary transition-colors" aria-label="Llamar a Tecnoayudas">
+                  +57 311 6368873
+                </a>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" aria-hidden="true" />
-                <span>Madrid, España</span>
+                <span>Medellín, Colombia</span>
               </li>
             </ul>
           </div>

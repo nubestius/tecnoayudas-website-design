@@ -53,7 +53,7 @@ export default function EmpresaPage() {
                       <h3 className="font-heading font-semibold text-xl text-foreground">Visión</h3>
                     </div>
                     <p className="text-muted-foreground leading-relaxed">
-                      Ser la empresa líder en España en tecnologías de inclusión, reconocida por la calidad de nuestras
+                      Ser la empresa líder en Colombia en tecnologías de inclusión, reconocida por la calidad de nuestras
                       soluciones y nuestro compromiso con la accesibilidad universal.
                     </p>
                   </CardContent>

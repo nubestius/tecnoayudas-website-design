@@ -469,7 +469,7 @@ export default function HomePage() {
                   Experiencia que marca la diferencia
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Somos pioneros en tecnologías de inclusión en España, con un equipo multidisciplinar que combina
+                  Somos pioneros en tecnologías de inclusión en Colombia, con un equipo multidisciplinar que combina
                   expertise técnico con profundo conocimiento de las necesidades de nuestros usuarios.
                 </p>
 
